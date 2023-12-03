@@ -14,7 +14,7 @@ export default function Home({navigation}) {
     setWeather(res.data)
   }
   const searchListWeatherLocation =  async(city)=>{
-    const res = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=abe21a18f799047cd1c3d452a52fc204&lang=vi`)
+    const res = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=abe21a18f799047cd1c3d452a52fc204&lang=vi&units=metric`)
     setListWeather(res.data)
   }
   useEffect(()=>{
@@ -36,10 +36,7 @@ export default function Home({navigation}) {
           onChangeText={setTextInput}
           value={textInput}
         />
-        <TouchableOpacity onPress={()=> {
-            handleSearch()
-          }
-        }>
+    <TouchableOpacity onPress={()=> {handleSearch()}}>
         <FontAwesome5 style={styles.searchIcon} name="search-location" size={24} color="black" />
       </TouchableOpacity>
       </View>
