@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View,Image,TouchableOpacity ,Button, FlatList} from 'react-native';
+import moment from 'moment';
 
 function Future({ route }) {
     const listWeather = route.params?.listWeather.list || []
@@ -20,6 +21,10 @@ function Future({ route }) {
                <Text>{item.main.temp} °C</Text>
             </View>
             <View style={styles.weatherC}>
+              <Text>Độ ẩm: {item.main.humidity}%</Text>
+              <Text>Gió: {(item.wind.speed *3.6).toFixed(2)}Km/h</Text>
+            </View>
+            <View style={styles.weatherC}>
                <Text>{item.dt_txt}</Text>
             </View>
         </View>
@@ -27,7 +32,7 @@ function Future({ route }) {
 
 
     return ( 
-        <View>
+        <View style={styles.container}>
             <FlatList horizontal
                 data={listWeather}
                 renderItem={renderItem}
@@ -38,8 +43,8 @@ function Future({ route }) {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
       alignItems: 'center',
+      backgroundColor: '#eeeeee',
       justifyContent: 'center'
     },
     iconWeather: {
@@ -47,14 +52,16 @@ const styles = StyleSheet.create({
       height: 200,
     },
     weather: {
-        borderWidth: 0.5,
-        width: 340,
-        margin:10,
-        borderRadius: 10
+      width: 340,
+      margin:5,
+      borderRadius: 10,
+      backgroundColor: '#fff',
+      display: 'flex',
+      justifyContent: 'center'
     },
     weatherC: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
     }
   });
 

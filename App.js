@@ -6,18 +6,22 @@ import Home from './src/Screens/Home'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
-  listWeather = (data) => {
-    console.log(data)
-  }
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: '#eeeeee' },
+          headerTintColor: 'black',
+        }}
+      >
         <Stack.Screen 
-          name="Home" options={{title: 'Home'}} 
+          name="Home" 
+          options={{title: 'Home'}} 
           component={Home}
         />
         <Stack.Screen 
-          name="Future" options={{title: 'Dự báo trong vài ngày tới'}}
+          name="Future" 
+          options={{title: 'Dự báo trong vài ngày tới'}}
           component={Future}
         />
     </Stack.Navigator>
